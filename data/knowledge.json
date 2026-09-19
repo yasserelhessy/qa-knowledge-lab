@@ -1,0 +1,38 @@
+[
+  {
+    "id": "release",
+    "title": "Release gates",
+    "text": "A release requires passing API contract tests, integration tests, and Playwright smoke tests. The golden dataset evaluation must pass all cases before deployment.",
+    "keywords": "release releases gate gates deployment deploy requirements checks required tests"
+  },
+  {
+    "id": "fixtures",
+    "title": "Synthetic test fixtures",
+    "text": "Each test creates a synthetic customer with a unique test-run ID. Fixtures delete created records after the test, including when assertions fail. Never use production customer data.",
+    "keywords": "fixture fixtures synthetic data customer customers cleanup records test tests isolation"
+  },
+  {
+    "id": "retry",
+    "title": "Payment API retries",
+    "text": "Retry payment requests only for HTTP 429 and 503, with at most three attempts and exponential backoff. Reuse the same idempotency key for every attempt.",
+    "keywords": "payment payments api retry retries retried attempts backoff idempotency key 429 503"
+  },
+  {
+    "id": "contract",
+    "title": "Order API contract",
+    "text": "POST /orders returns HTTP 201 with order_id, status, and total_cents. The status is pending and total_cents is a non-negative integer. A missing customer_id returns HTTP 422.",
+    "keywords": "order orders api contract post response returns fields status missing customer_id total_cents order_id 201 422"
+  },
+  {
+    "id": "incident",
+    "title": "Incident ownership",
+    "text": "The on-call QA lead triages a failed release gate. The owning engineer fixes the defect, and QA reruns the failed checks before approving the release.",
+    "keywords": "incident incidents ownership owner owns triage triages failed failure release gate lead engineer qa"
+  },
+  {
+    "id": "eval",
+    "title": "Evaluation policy",
+    "text": "The synthetic golden dataset contains supported questions and unsupported questions. Every case checks answer status, expected citations, and required facts. Demo answers must match their cited excerpt exactly.",
+    "keywords": "evaluation evaluate eval golden dataset questions supported unsupported policy checks citations facts answers"
+  }
+]

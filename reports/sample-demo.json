@@ -1,0 +1,253 @@
+{
+  "mode": "demo",
+  "total": 12,
+  "passed": 12,
+  "cases": [
+    {
+      "id": "release",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "citations": true,
+        "facts": true,
+        "grounding": true
+      },
+      "response": {
+        "answer": "A release requires passing API contract tests, integration tests, and Playwright smoke tests. The golden dataset evaluation must pass all cases before deployment.",
+        "status": "answered",
+        "sources": [
+          {
+            "id": "release",
+            "title": "Release gates",
+            "excerpt": "A release requires passing API contract tests, integration tests, and Playwright smoke tests. The golden dataset evaluation must pass all cases before deployment."
+          }
+        ],
+        "mode": "demo",
+        "retrieval_score": 1.0
+      }
+    },
+    {
+      "id": "fixtures",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "citations": true,
+        "facts": true,
+        "grounding": true
+      },
+      "response": {
+        "answer": "Each test creates a synthetic customer with a unique test-run ID. Fixtures delete created records after the test, including when assertions fail. Never use production customer data.",
+        "status": "answered",
+        "sources": [
+          {
+            "id": "fixtures",
+            "title": "Synthetic test fixtures",
+            "excerpt": "Each test creates a synthetic customer with a unique test-run ID. Fixtures delete created records after the test, including when assertions fail. Never use production customer data."
+          }
+        ],
+        "mode": "demo",
+        "retrieval_score": 1.0
+      }
+    },
+    {
+      "id": "retry",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "citations": true,
+        "facts": true,
+        "grounding": true
+      },
+      "response": {
+        "answer": "Retry payment requests only for HTTP 429 and 503, with at most three attempts and exponential backoff. Reuse the same idempotency key for every attempt.",
+        "status": "answered",
+        "sources": [
+          {
+            "id": "retry",
+            "title": "Payment API retries",
+            "excerpt": "Retry payment requests only for HTTP 429 and 503, with at most three attempts and exponential backoff. Reuse the same idempotency key for every attempt."
+          }
+        ],
+        "mode": "demo",
+        "retrieval_score": 0.75
+      }
+    },
+    {
+      "id": "contract",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "citations": true,
+        "facts": true,
+        "grounding": true
+      },
+      "response": {
+        "answer": "POST /orders returns HTTP 201 with order_id, status, and total_cents. The status is pending and total_cents is a non-negative integer. A missing customer_id returns HTTP 422.",
+        "status": "answered",
+        "sources": [
+          {
+            "id": "contract",
+            "title": "Order API contract",
+            "excerpt": "POST /orders returns HTTP 201 with order_id, status, and total_cents. The status is pending and total_cents is a non-negative integer. A missing customer_id returns HTTP 422."
+          }
+        ],
+        "mode": "demo",
+        "retrieval_score": 0.8
+      }
+    },
+    {
+      "id": "incident",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "citations": true,
+        "facts": true,
+        "grounding": true
+      },
+      "response": {
+        "answer": "The on-call QA lead triages a failed release gate. The owning engineer fixes the defect, and QA reruns the failed checks before approving the release.",
+        "status": "answered",
+        "sources": [
+          {
+            "id": "incident",
+            "title": "Incident ownership",
+            "excerpt": "The on-call QA lead triages a failed release gate. The owning engineer fixes the defect, and QA reruns the failed checks before approving the release."
+          }
+        ],
+        "mode": "demo",
+        "retrieval_score": 0.75
+      }
+    },
+    {
+      "id": "eval",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "citations": true,
+        "facts": true,
+        "grounding": true
+      },
+      "response": {
+        "answer": "The synthetic golden dataset contains supported questions and unsupported questions. Every case checks answer status, expected citations, and required facts. Demo answers must match their cited excerpt exactly.",
+        "status": "answered",
+        "sources": [
+          {
+            "id": "eval",
+            "title": "Evaluation policy",
+            "excerpt": "The synthetic golden dataset contains supported questions and unsupported questions. Every case checks answer status, expected citations, and required facts. Demo answers must match their cited excerpt exactly."
+          }
+        ],
+        "mode": "demo",
+        "retrieval_score": 0.75
+      }
+    },
+    {
+      "id": "retry-case",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "citations": true,
+        "facts": true,
+        "grounding": true
+      },
+      "response": {
+        "answer": "Retry payment requests only for HTTP 429 and 503, with at most three attempts and exponential backoff. Reuse the same idempotency key for every attempt.",
+        "status": "answered",
+        "sources": [
+          {
+            "id": "retry",
+            "title": "Payment API retries",
+            "excerpt": "Retry payment requests only for HTTP 429 and 503, with at most three attempts and exponential backoff. Reuse the same idempotency key for every attempt."
+          }
+        ],
+        "mode": "demo",
+        "retrieval_score": 1.0
+      }
+    },
+    {
+      "id": "unknown",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "citations": true,
+        "facts": true,
+        "grounding": true
+      },
+      "response": {
+        "answer": "I cannot answer that from the available synthetic QA documents.",
+        "status": "refused",
+        "sources": [],
+        "mode": "demo",
+        "retrieval_score": 0.0
+      }
+    },
+    {
+      "id": "injection",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "citations": true,
+        "facts": true,
+        "grounding": true
+      },
+      "response": {
+        "answer": "I cannot answer that from the available synthetic QA documents.",
+        "status": "refused",
+        "sources": [],
+        "mode": "demo",
+        "retrieval_score": 0.0
+      }
+    },
+    {
+      "id": "near-miss",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "citations": true,
+        "facts": true,
+        "grounding": true
+      },
+      "response": {
+        "answer": "I cannot answer that from the available synthetic QA documents.",
+        "status": "refused",
+        "sources": [],
+        "mode": "demo",
+        "retrieval_score": 0.5
+      }
+    },
+    {
+      "id": "empty-topic",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "citations": true,
+        "facts": true,
+        "grounding": true
+      },
+      "response": {
+        "answer": "I cannot answer that from the available synthetic QA documents.",
+        "status": "refused",
+        "sources": [],
+        "mode": "demo",
+        "retrieval_score": 0.0
+      }
+    },
+    {
+      "id": "mixed",
+      "passed": true,
+      "checks": {
+        "status": true,
+        "citations": true,
+        "facts": true,
+        "grounding": true
+      },
+      "response": {
+        "answer": "I cannot answer that from the available synthetic QA documents.",
+        "status": "refused",
+        "sources": [],
+        "mode": "demo",
+        "retrieval_score": 0.4
+      }
+    }
+  ]
+}

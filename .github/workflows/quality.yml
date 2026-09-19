@@ -1,0 +1,37 @@
+name: Quality gate
+on: [push, pull_request]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      QA_MODE: demo
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: pip install -r requirements-lock.txt
+      - run: pip install --no-deps -e .
+      - run: python -m playwright install --with-deps chromium
+      - run: pytest -m "not e2e" --junitxml=reports/unit-api.xml
+      - run: python -m app.evaluate
+      - name: Start application and run browser checks
+        run: |
+          uvicorn app.main:app --host 127.0.0.1 --port 8000 > reports/server.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID"' EXIT
+          for i in {1..30}; do
+            if curl --fail http://127.0.0.1:8000/api/health; then break; fi
+            sleep 1
+          done
+          curl --fail http://127.0.0.1:8000/api/health
+          pytest -m e2e --browser chromium --tracing retain-on-failure --screenshot only-on-failure --junitxml=reports/e2e.xml
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: quality-evidence
+          path: |
+            reports/
+            test-results/
